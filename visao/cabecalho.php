@@ -11,25 +11,31 @@
 						<li class="has-dropdown">
 							<a href="#">produtos</a>
 							<ul class="dropdown">
-								<li><a href="#">Todos os Produtos</a></li>
-								<li><a href="#">Masculino</a></li>
-								<li><a href="#">Feminino</a></li>
-								<li><a href="#">Kids</a></li>
+								<li><a href="./produto/listarTodos">Todos os Produtos</a></li>
+								<li><a href="./produto/listarCategoria/sexo/masc">Masculino</a></li>
+								<li><a href="./produto/listarCategoria/sexo/femi">Feminino</a></li>
+								<li><a href="./produto/listarCategoria/sexo/kids">Kids</a></li>
 							</ul>
 						</li>
 						<li class="has-dropdown">
 							<a href="#">Categorias</a>
 							<ul class="dropdown">
-								<li><a href="#">Bela,recatada e do lar</a></li>
-								<li><a href="#">diferentonas</a></li>
-								<li><a href="#">gotica suave</a></li>
+								<li><a href="./produto/listarCategoria/categoria/bela">Bela,recatada e do lar</a></li>
+								<li><a href="./produto/listarCategoria/categoria/diferente">diferentonas</a></li>
+								<li><a href="./produto/listarCategoria/categoria/gotica">gotica suave</a></li>
 							</ul>
 						</li>
-						<?php if (estaLogado()){ ?>
+						<?php if (adminestaLogado()){ ?>
+						<li><a href="./usuario/index">area admin</a></li>
+						<?php } ?>
+						<?php if (userestaLogado()){ ?>
 						<li><a href="./usuario/index">area usuario</a></li>
+						<?php } ?>
+						<?php if (estaLogado()){ ?>
 						<li><a href="./login/logout">sair</a></li>
 						<?php }else{ ?>
 						<li><a href="./login">login</a></li>
+						<li><a href="./usuario/adicionar">cadatre-se :)</a></li>
 						<?php } ?>
 					</ul>
 				</div>

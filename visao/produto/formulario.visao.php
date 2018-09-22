@@ -21,5 +21,6 @@
         <option value="bela" <?=@assinalarCampo($produto['categoria'], 'bela')?>>Bela, recatada e do lar</option>
         <option value="diferente" <?=@assinalarCampo($produto['categoria'], 'diferente')?>>Diferentonas</option>
     </select><br>
+   Imagem: <input type="file" name="imagem" required><br>
     <button type="submit">Enviar</button>
 </form>

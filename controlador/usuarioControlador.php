@@ -1,10 +1,22 @@
 <?php
 
 require "modelo/usuarioModelo.php";
-
-/** admin */
+require "modelo/validacaoModelo.php";
+/** admin,user */
 function index() {
-    $dados["usuarios"] = pegarTodosUsuarios();
+
+
+
+    $usuarioLogado = pegarUsuarioLogado();
+
+    if (adminestaLogado()){
+        $dados["usuarios"] = pegarTodosUsuarios();
+    }else{
+        $usuarios = array();
+        $usuarios[] = $usuarioLogado;
+        $dados["usuarios"] = $usuarios;
+    }
+
     exibir("usuario/listar", $dados);
 }
 
@@ -12,11 +24,30 @@ function index() {
 function adicionar() {
     if (ehPost()) {
         extract($_POST);
-        alert(adicionarUsuario($nome, $email, $senha,$cpf,$nascimento,$sexo));
-        redirecionar("usuario/index");
-    } else {
-        exibir("usuario/formulario");
-    }
+        $erros = array();
+
+        $erros[] = validar_email($email);
+        $erros[] = validar_nome($nome);
+        $erros[]= validar_cpf($cpf);
+        $erros[]=validar_senha($senha,$confirmacao_senha);
+        $erros[]= validar_data($nascimento);
+
+        $controle = true;
+
+        foreach ($erros as $validacao) {
+            if($validacao !== true) {
+                alert ($validacao);
+                redirecionar("usuario/adicionar");
+                $controle = false;    
+            }
+        }
+        if($controle) {
+            alert(adicionarUsuario($nome, $email, $senha,$cpf,$nascimento,$sexo));
+            redirecionar("usuario/index");
+        } 
+    }else {
+            exibir("usuario/formulario");
+        }
 }
 
 /** admin, user */
@@ -26,7 +57,7 @@ function deletar($id) {
 }
 
 
-/** admin */
+/** admin,user */
 function editar($id) {
     if (ehPost()) {
         $nome = $_POST["nome"];
@@ -44,8 +75,10 @@ function editar($id) {
     }
 }
 
-/** user */
+/** user, admin */
 function visualizar($id) {
     $dados['usuario'] = pegarUsuarioPorId($id);
     exibir("usuario/visualizar", $dados);
 }
+
+

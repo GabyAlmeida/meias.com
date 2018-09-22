@@ -7,14 +7,9 @@ function authLogin($login, $passwd) {
     $user = pegarLogin($login,$passwd);
 
     if (!empty($user)) {
-        if ($user["tipousuario"] === "admin") {//aq
-            $_SESSION["auth"] = array("user" => "admin", "role" => "admin");
-            return true;
-        }
-        if ($user["tipousuario"] === "user") {//aq
-            $_SESSION["auth"] = array("user" => "user", "role" => "user");
-            return true;
-        }    
+        $_SESSION["auth"] = 
+            array("user" => $user, "role" => $user["tipousuario"]);
+        return true;
     }else{
         return false;
     }
@@ -43,4 +38,15 @@ function estaLogado() {
 
 function adminEstaLogado() {
     return (isset($_SESSION["auth"]) && ($_SESSION["auth"]["role"] == "admin"));
+}
+
+function userEstaLogado() {
+    return (isset($_SESSION["auth"]) && ($_SESSION["auth"]["role"] == "user"));
+}
+
+
+function pegarUsuarioLogado() {
+    if (authIsLoggedIn()) {
+        return $_SESSION["auth"]["user"];
+    }  
 }

@@ -7,6 +7,7 @@
         <option value="f" <?=@assinalarCampo($usuario['sexo'], 'f')?>>Feminino</option>
     </select><br>
     senha: <input type="text" name="senha" value="<?=@$usuario['senha']?>"><br>
+     confirmação senha: <input type="text" name="confirmacao_senha" ><br>
 
     cpf: <input type="text" name="cpf" value="<?=@$usuario['cpf']?>"><br>
 

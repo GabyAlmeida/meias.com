@@ -1,3 +1,4 @@
+
 <div class="row">
     <?php foreach ($produtos as $produto): ?>
                 <div class="col-md-4 text-center animate-box">
@@ -23,3 +24,8 @@
                 </div>
                 <?php endforeach; ?>
           </div>
+
+<?php if (adminEstaLogado()): ?>
+    <a href="./produto/adicionar" class="btn btn-primary">Adicionar novo produto</a>
+<?php endif; ?>
+

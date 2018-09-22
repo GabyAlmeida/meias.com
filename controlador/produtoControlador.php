@@ -1,11 +1,25 @@
 <?php
 require "modelo/produtoModelo.php";
 
-/** anon */
+/** anon,admin,user */
 function index() {
-    $dados['produtos'] = selecionarTodosProdutos();
+    $min=10;
+    $dados['produtos'] = selecionarAlgunsProdutos($min);
     exibir("produto/listar", $dados);
 }
+
+/** anon,admin,user */
+function listarTodos() {
+    $dados['produtos'] = selecionarTodosProdutos();
+    exibir("produto/listarTodos", $dados);
+}
+
+/** anon,admin,user */
+function listarCategoria($nome,$valor) {
+    $dados['produtos'] = selecionarProdutoCategoria($nome,$valor);
+    exibir("produto/listarTodos", $dados);
+}
+
 
 /** admin */
 function adicionar() {
@@ -36,7 +50,7 @@ function editar($id) {
     }
 }
 
-/** anon */
+/** anon,admin,user */
 
 function visualizar($id) {
    $dados['produtos'] = pegarProdutoPorId($id);
@@ -49,10 +63,12 @@ function deletar($termo) {
     redirecionar("produto/index");
 }
 
-/** anon */
+/** anon,admin,user */
 function buscar() {
     extract($_POST);
     $dados['produtos'] = buscarM($termo);
     exibir("produto/busca", $dados);
 }
+
+
 ?>

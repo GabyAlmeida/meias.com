@@ -2,6 +2,25 @@
 function adicionarProduto($preco,$nome,$descricao,$tamanho,$sexo,$categoria){
 	$sql = "INSERT INTO produtos (preco, nomeproduto,descricao,tamanho,sexo,categoria) 
 			VALUES ('$preco','$nome','$descricao','$tamanho','$sexo','$categoria')";
+
+	if ( isset( $_FILES[ 'imagem' ][ 'name' ] ) && $_FILES[ 'imagem' ][ 'error' ] == 0 ) {
+	$arquivo_tmp = $_FILES[ 'imagem' ][ 'tmp_name' ];
+	$img = $_FILES[ 'imagem' ][ 'name' ];
+	
+	$extensao = pathinfo ( $img, PATHINFO_EXTENSION );
+	
+	$extensao = strtolower ( $extensao );
+
+	if ( strstr ( '.jpg;.jpeg;.gif;.png', $extensao ) ) {
+		$novoNome = uniqid ( time () ) . '.' . $extensao;
+		
+		$destino = './publico/images/'.$novoNome;
+		@move_uploaded_file ( $arquivo_tmp, $destino );
+		$sql = "INSERT INTO produtos(preco,nomeproduto,descricao,tamanho,imagem,sexo,categoria)
+		VALUES ('$preco','$nome', '$descricao','$tamanho','$destino','$sexo','$categoria')";
+	}
+}
+
     $resultado = mysqli_query($cnx = conn(), $sql);
     if(!$resultado) { die('Erro ao cadastrar produto' . mysqli_error($cnx)); }
     return 'produto cadastrado com sucesso!';
@@ -9,6 +28,25 @@ function adicionarProduto($preco,$nome,$descricao,$tamanho,$sexo,$categoria){
 
 function editarProduto($id,$preco,$nome,$descricao,$tamanho,$sexo,$categoria) {
     $sql = "UPDATE produtos SET preco = '$preco', nomeproduto = '$nome', descricao='$descricao', tamanho='$tamanho', sexo='$sexo', categoria='$categoria'  WHERE idproduto = $id";
+    
+if ( isset( $_FILES[ 'imagem' ][ 'name' ] ) && $_FILES[ 'imagem' ][ 'error' ] == 0 ) {
+	$arquivo_tmp = $_FILES[ 'imagem' ][ 'tmp_name' ];
+	$img = $_FILES[ 'imagem' ][ 'name' ];
+	
+	$extensao = pathinfo ( $img, PATHINFO_EXTENSION );
+	
+	$extensao = strtolower ( $extensao );
+
+	if ( strstr ( '.jpg;.jpeg;.gif;.png', $extensao ) ) {
+		$novoNome = uniqid ( time () ) . '.' . $extensao;
+		
+		$destino = './publico/images/'.$novoNome;
+		@move_uploaded_file ( $arquivo_tmp, $destino );
+		$sql = "INSERT INTO produtos(preco,nomeproduto,descricao,tamanho,imagem,sexo,categoria)
+		VALUES ('$preco','$nome', '$descricao','$tamanho','$destino','$sexo','$categoria')";
+	}
+}
+
     $resultado = mysqli_query($cnx = conn(), $sql);
     if(!$resultado) { die('Erro ao alterar produto' . mysqli_error($cnx)); }
     return 'Produto alterado com sucesso!';
@@ -45,13 +83,18 @@ function buscarM($termoBusca){
 	return $produtos;
 }
 
-function selecionarAlgunsProdutos($id,$limi){
-	$sql="SELECT *  from  produtos LIMIT $limi";
+
+function selecionarAlgunsProdutos($limi){
+	$sql="SELECT *  from produtos produtos LIMIT $limi"; //SELECIONAR UM REGISTRO!!
 	$retorno = mysqli_query(conn(),$sql);
+	$produtos=array();
+	while ($registros = mysqli_fetch_array($retorno)){
+		$produtos[]=$registros;
+	}
 
-
-	$registros = mysqli_fetch_assoc($retorno);
+	return $produtos;
 }
+
 
 function pegarProdutoPorId($id) {
     $sql = "SELECT * FROM produtos WHERE idproduto= $id";
@@ -60,15 +103,32 @@ function pegarProdutoPorId($id) {
     return $produto;
 }
 
-function selectionProdutoCategoria($valorFiltro){
+function selecionarProdutoCategoria($nomeFiltro,$valorFiltro){
 	$sql="SELECT  * from  produtos where $nomeFiltro='$valorFiltro'"; //SELECIONAR TODOS OS REGISTROS!
 
 	$retorno = mysqli_query(conn(),$sql);
+	$produtos=array();
+	while ($registros = mysqli_fetch_array($retorno)){
+		$produtos[]=$registros;
+	}
 
-
-
-	$registros = mysqli_fetch_assoc($retorno);
+	return $produtos;
 }
 
+function pegarVariosProdutosPorId($carrinhoProdutos){
+			for ($i=0; $i < count($carrinhoProdutos); $i++) {
+				$id = $carrinhoProdutos[$i];
+				$comando 	= "SELECT * FROM produtos WHERE idproduto = '$id'";
+				$query 	= mysqli_query($cnx = conn(),$comando); 
+				
+				if(!$query) {
+					die(mysqli_error($cnx));
+				}
+				$produtos[] = mysqli_fetch_assoc($query); 
+			}
+			if(!empty($produtos)){
+				return $produtos;
+			}
+		}
 
 ?>

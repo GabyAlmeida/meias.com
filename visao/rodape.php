@@ -27,7 +27,7 @@
 				<div class="col-md-12 text-center">
 					<p>
 						<small class="block">&copy; 2018 meias.com . All Rights Reserved.</small> 
-						<small class="block">Designed by Gabriely </small>
+						
 					</p>
 					<p>
 						<ul class="fh5co-social-icons">
