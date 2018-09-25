@@ -18,36 +18,12 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1 animate-box">
-					<div class="owl-carousel owl-carousel-fullwidth product-carousel">
-						<div class="item">
-							<div class="active text-center">
-								<figure>
-									<img src="<?=$produtos['imagem']?>" alt="user">
-								</figure>
-							</div>
-						</div>
-						<div class="item">
-							<div class="active text-center">
-								<figure>
-									<img src="<?=$produtos['imagem']?>" alt="user">
-								</figure>
-							</div>
-						</div>
-						<div class="item">
-							<div class="active text-center">
-								<figure>
-									<img src="<?=$produtos['imagem']?>" alt="user">
-								</figure>
-							</div>
-						</div>
-				
-
-					</div>
+					
 					<div class="row animate-box">
 						<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
 							<h2><?=$produtos['nomeproduto']?></h2>
 							<p>
-								<a href="#" class="btn btn-primary btn-outline btn-lg">Adicionar ao carrinho</a>
+								<a href="./carrinho/adicionar/<?=$produtos['idproduto']?>" class="btn btn-primary btn-outline btn-lg">Adicionar ao carrinho</a>
 								<a href="#" class="btn btn-primary btn-outline btn-lg">Comprar</a>
 							</p>
 						</div>

@@ -5,9 +5,9 @@ function addCarrinho($idadd){
 	}
 	if (!in_array($idadd, $_SESSION["carrinho"])) {
 			$_SESSION["carrinho"][] = $idadd;
-		redirecionar("produto/index");
+		redirecionar("carrinho/index");
 	}else{
-		redirecionar("produto/index");
+		redirecionar("carrinho/index");
 	}
 }
 ?>

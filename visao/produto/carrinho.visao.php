@@ -1,6 +1,6 @@
 
 
-					<h1>CARRINHO DE COMPRAS </h1>
+					<h3>CARRINHO DE COMPRAS </h3>
 			
 				<?php if (isset($produtos)) { ?>
 					<table class="table">
@@ -16,15 +16,14 @@
 
 						?>
 							<tr>		
-								 <td><?=$produto['idproduto']?></td>
-								<td></td>
+								 <td><?=$produto['nomeproduto']?></td>
 								 <td><?=$produto['preco']?></td>
 								<td><a href="<?='carrinho/deletar/' . $i?>">excluir</a></td>
 							</tr>
 						<?php 
 							$i++;}
 							}else{
-								echo "<h1 class='text-center'>Não há produtos existentes no seu carrinho!</h1>";
+								echo "<h4 class='text-center'>Não há produtos existentes no seu carrinho!</h4>";
 							}
 						?>
 
