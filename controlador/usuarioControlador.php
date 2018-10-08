@@ -82,3 +82,7 @@ function visualizar($id) {
 }
 
 
+function ola() {
+    echo "ola!";
+}
+
