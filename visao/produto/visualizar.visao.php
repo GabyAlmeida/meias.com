@@ -23,7 +23,7 @@
 						<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
 							<h2><?=$produtos['nomeproduto']?></h2>
 							<p>
-								<a href="./carrinho/adicionar/<?=$produtos['idproduto']?>" class="btn btn-primary btn-outline btn-lg">Adicionar ao carrinho</a>
+								<a href="./produto/addCarrinho/<?=$produto['idproduto']?>/<?=$produto['nomeproduto']?>/<?=$produto['preco']?>" class="btn btn-primary btn-outline btn-lg">Adicionar ao carrinho</a>
 								<a href="#" class="btn btn-primary btn-outline btn-lg">Comprar</a>
 							</p>
 						</div>
