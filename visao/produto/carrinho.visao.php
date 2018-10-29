@@ -30,6 +30,7 @@
 <?php echo "O valor total da compra é: " . $totalCarrinho; ?>
 <br>
 <br>
-<a href="./produto" class="btn btn-primary">Adicionar novo produto</a>
+<a href="./produto" class="btn btn-primary">Adicionar novo produto</a><br>
+<a href="./pedido" class="btn btn-primary">Finalizar pedido</a>
 
 
