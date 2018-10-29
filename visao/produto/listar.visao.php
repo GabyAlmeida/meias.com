@@ -52,7 +52,7 @@
                         <div class="product-grid" style="background-image:url(<?=$produto['imagem']?>);">
                             <div class="inner">
                                 <p>
-                                    <a href="./carrinho/adicionar/<?=$produto['idproduto']?>" class="icon"><i class="icon-shopping-cart"></i></a>
+                                    <a href="./produto/addCarrinho/<?=$produto['idproduto']?>/<?=$produto['nomeproduto']?>/<?=$produto['preco']?>" class="icon"><i class="icon-shopping-cart"></i></a>
                                     <a href="./produto/visualizar/<?=$produto['idproduto']?>" class="icon"><i class="icon-eye"></i></a>
                                 </p>
                             </div>
