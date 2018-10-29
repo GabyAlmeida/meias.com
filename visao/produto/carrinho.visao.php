@@ -1,30 +1,35 @@
 
 
-					<h3>CARRINHO DE COMPRAS </h3>
-			
-				<?php if (isset($produtos)) { ?>
-					<table class="table">
-						<tr>
-							<th>PRODUTO</th>
-							<th>PREÇO</th>
-							<th>Excluir</th>
-						</tr>	
+<h2>Carrinho</h2>
 
-						<?php 
-							$i = 0;
-							foreach ($produtos as $produto) {
+<table class="table">
+    <thead>
+        <tr>
+            <th>NOME</th>
+            <th>QUANTIDADE</th>
+            <th>DELETE</th>
+            <th>PRECO</th>
+        </tr>
+    </thead>
+    <?php foreach ($carrinho as $produto): ?>
+        <tr>
+            <td><?= $produto['nome'] ?></td>
+            <td>
+                <form action="" method="post">
+                    <input type="number" name="quantidade" value="<?= $produto['quantidade'] ?>">
+                    <input type="hidden" name="id" value="<?=$produto["idProduto"] ?>">
+                    <input type="submit" class="btn btn-primary" placeholder="Atualizar quantidade">
+                </form>
+            </td>
+            <td><a href="./produto/deletarCarrinho/<?= $produto['idProduto'] ?>" class="btn btn-danger">del</a></td>
+            <td><?= $produto['preco'] ?></td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+<br>
+<?php echo "O valor total da compra é: " . $totalCarrinho; ?>
+<br>
+<br>
+<a href="./produto" class="btn btn-primary">Adicionar novo produto</a>
 
-						?>
-							<tr>		
-								 <td><?=$produto['nomeproduto']?></td>
-								 <td><?=$produto['preco']?></td>
-								<td><a href="<?='carrinho/deletar/' . $i?>">excluir</a></td>
-							</tr>
-						<?php 
-							$i++;}
-							}else{
-								echo "<h4 class='text-center'>Não há produtos existentes no seu carrinho!</h4>";
-							}
-						?>
 
-					</table>
