@@ -49,3 +49,16 @@ CREATE TABLE pedido_produto(
 	FOREIGN KEY(idpedido) REFERENCES pedido(idpedido)
 ) engine = innodb;
 
+CREATE TABLE endereco(
+	idendereco INT AUTO_INCREMENT,
+	idusuario INT NOT NULL,
+        nome varchar(60) not null,
+        rua varchar(60) not null,
+        bairro varchar(60) not null,
+        cidade varchar(60) not null,
+        cep varchar(60) not null,
+	PRIMARY KEY(idendereco),
+	FOREIGN KEY(idusuario) REFERENCES usuario(idusuario);
+        FOREIGN KEY(nome) REFERENCES usuario(nomeusuario)
+) engine = innodb;
+

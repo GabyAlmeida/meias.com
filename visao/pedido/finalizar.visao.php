@@ -6,29 +6,24 @@
            $quantidade = $produto['quantidade']+ $quantidade;
 
      endforeach; 
-     echo $quantidade." produtos comprados <br>";
-      echo "O valor subtotal da compra é: " . $totalCarrinho; 
       ?>
 <br>
 
-<table border="2">
+<table class="table">
     <thead>
         <tr>
-            <th>Total de produtos comprados</th>
-            <td><</td>
+            <th>TOTAL DE PRODUTOS COMPRADOS</th>
+            <td> <?=$quantidade ?></td>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <th>Subtotal</th>
-            <td>fghdf</td>
+            <th>SUBTOTAL</th>
+            <td> <?= $totalCarrinho?></td>
         </tr>
       
     </tbody>
 </table>
 
-<p> endereço da compra: <p>
-<br>
-<br>
-<a href="./produto" class="btn btn-primary">Comprar!</a><br>
-
+<h3>Endereço</h3><br>
+<p><a href="endereco/adicionar/" class="">Alterar endereço</a></p>

@@ -136,5 +136,4 @@ function deletarCarrinho($id){
     redirecionar("produto/listarCarrinho");
 }
 
-
 ?>
