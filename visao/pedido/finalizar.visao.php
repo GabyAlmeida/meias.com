@@ -44,8 +44,30 @@
 </table>
 
 <h3>Endereço</h3><br>
-<p><a href="endereco/adicionar/" class="">Alterar endereço</a></p>
-
+<?php if(!empty($endereco)){ ?>
+<table class="table">
+    <thead>
+        <tr>
+            <th>RUA</th>
+            <th>BAIRRO</th>
+            <th>CIDADE</th>
+            <th>CEP</th>
+        </tr>
+    </thead>
+    <?php 
+    foreach ($endereco as $enderecos): ?>
+    <tr>
+        <td><?=$endereco['rua']?></td>
+        <td><?=$endereco['bairro']?></td>
+        <td><?=$endereco['cidade']?></td>
+        <td><?=$endereco['cep']?></td>
+    </tr>
+    <?php endforeach; ?>
+</table>
+<p><a href="endereco/selecionar/" class="">Trocar endereço de entrega</a></p>
+<?php }else{ ?>
+<p><a href="endereco/selecionar/" class="">Selecionar endereço de entrega</a></p>
+<?php } ?>
 <h3>Tem cupom de desconto? Manda aí!</h3>
 <form action="./cupom/buscar/" method="POST">
     <input type="text" name="cupom" value="">
