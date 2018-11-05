@@ -60,3 +60,10 @@ CREATE TABLE endereco(
 	FOREIGN KEY(idusuario) REFERENCES usuario(idusuario)
 ) engine = innodb;
 
+
+CREATE TABLE cupom(
+	idcupom INT AUTO_INCREMENT,
+	nomecupom VARCHAR(60),
+        desconto INT,
+	PRIMARY KEY(idcupom)
+) engine = innodb;

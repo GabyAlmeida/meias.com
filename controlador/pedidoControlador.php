@@ -1,4 +1,5 @@
 <?php
+require "modelo/cupomModelo.php";
 /**admin,user */
 function index() {
     $dados["carrinho"] = $_SESSION["carrinho"]["produtos"];

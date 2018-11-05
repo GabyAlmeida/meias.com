@@ -51,7 +51,7 @@
 						      </form>
 						    </div>
 						</li>
-						<li class="shopping-cart"><a href="./carrinho" class="cart"><span><i class="icon-shopping-cart"></i></span></a></li>
+						<li class="shopping-cart"><a href="./produto/listarCarrinho" class="cart"><span><i class="icon-shopping-cart"></i></span></a></li>
 					</ul>
 				</div>
 			</div>
