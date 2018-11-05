@@ -58,7 +58,7 @@ CREATE TABLE endereco(
         cidade varchar(60) not null,
         cep varchar(60) not null,
 	PRIMARY KEY(idendereco),
-	FOREIGN KEY(idusuario) REFERENCES usuario(idusuario);
+	FOREIGN KEY(idusuario) REFERENCES usuario(idusuario),
         FOREIGN KEY(nome) REFERENCES usuario(nomeusuario)
 ) engine = innodb;
 
