@@ -2,10 +2,10 @@
 <?php
 
 require "modelo/enderecoModelo.php";
+
 /** anon,admin,user */
 function index() {
-    $_SESSION["endereco"]= pegarTodosEnderecos();
-    $dados['enderecos'] = $_SESSION["endereco"];
+     $dados['enderecos'] = pegarTodosEnderecos();
     exibir("endereco/listar",$dados);
 }
 
@@ -43,13 +43,13 @@ function deletar($id) {
 
 function selecionar(){
     $id= $_SESSION["auth"]["user"]["idusuario"];
-    $dados['endereco'] = pegarEndereco($id);
+    $dados['enderecos'] = pegarEndereco($id);
     exibir("endereco/selecionar", $dados);
 }
 
 function esse($id){
-    $dados['endereco'] = pegarEnderecoPorId($id);
-    $dados["carrinho"] = $_SESSION["carrinho"]["produtos"];
-    $dados["totalCarrinho"] = $_SESSION["carrinho"]["total"];
-    exibir("pedido/finalizar", $dados);
+    $enderecoSelecionado = pegarEnderecoPorId($id);
+    $_SESSION["enderecoSelecionado"] = $enderecoSelecionado;
+    redirecionar("pedido");
+    //exibir("pedido/finalizar", $dados);
 }

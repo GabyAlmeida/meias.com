@@ -10,7 +10,10 @@
             <th>DELETE</th>
         </tr>
     </thead>
-    <?php foreach ($enderecos as $endereco): ?>
+    <?php 
+    echo "<pre>";
+    print_r($enderecos);
+    foreach ($enderecos as $endereco): ?>
     <tr>
         <td><?=$endereco['rua']?></td>
         <td><?=$endereco['bairro']?></td>

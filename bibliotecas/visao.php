@@ -23,4 +23,11 @@ function assinalarCampo($valorA, $valorB) {
     }
 }
 
+function mm($dados) {
+    echo "<pre>";
+    print_r($dados);
+    die();
+    
+}
+
 ?>

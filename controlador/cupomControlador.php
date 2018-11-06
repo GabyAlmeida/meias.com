@@ -26,9 +26,7 @@ function deletar($termo) {
 /** anon,admin,user */
 function buscar() {
     extract($_POST);
- $dados['cupons']= buscarCupom($cupom);
-    $dados["carrinho"] = $_SESSION["carrinho"]["produtos"];
-    $dados["totalCarrinho"] = $_SESSION["carrinho"]["total"];
-    exibir("pedido/finalizar",$dados);
+$_SESSION["cupom"]= buscarCupom($cupom);
+    redirecionar("pedido");
 }
 

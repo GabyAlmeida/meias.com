@@ -9,7 +9,7 @@
         </tr>
     </thead>
     <?php
-    foreach ($endereco as $enderecos): ?>
+    foreach ($enderecos as $endereco): ?>
     <tr>
         <td><?=$endereco['rua']?></td>
         <td><?=$endereco['bairro']?></td>

@@ -20,9 +20,9 @@ function pegarTodosEnderecos() {
 }
 
 function pegarEnderecoPorId($id) {
-    $sql = "SELECT * FROM endereco WHERE idendereco= $id";
+    $sql = "SELECT * FROM endereco WHERE idendereco = $id";
     $resultado = mysqli_query(conn(), $sql);
-    $endereco = mysqli_fetch_array($resultado);
+    $endereco = mysqli_fetch_assoc($resultado);
     return $endereco;
 }
 
@@ -43,7 +43,10 @@ function deletarEndereco($id) {
 function pegarEndereco($id) {
     $sql = "SELECT * FROM endereco WHERE idusuario= $id";
     $resultado = mysqli_query(conn(), $sql);
-    $enderecos = mysqli_fetch_array($resultado);
+    $enderecos = array();
+    while ($linha = mysqli_fetch_array($resultado)) {
+        $enderecos[] = $linha;
+    }
     return $enderecos;
 }
 

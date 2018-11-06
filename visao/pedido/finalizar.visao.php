@@ -2,10 +2,8 @@
     
     <?php 
        $desconto=0;
-       if(!empty($cupons)){
-        foreach ($cupons as $cupom): 
+       if(!empty($cupom)){
            $desconto=$cupom['desconto'];
-     endforeach; 
        }
         $quantidade = 0;
         foreach ($carrinho as $produto): 
@@ -44,7 +42,7 @@
 </table>
 
 <h3>Endereço</h3><br>
-<?php if(!empty($endereco)){ ?>
+<?php if(!empty($enderecoSelecionado)){ ?>
 <table class="table">
     <thead>
         <tr>
@@ -54,15 +52,13 @@
             <th>CEP</th>
         </tr>
     </thead>
-    <?php 
-    foreach ($endereco as $enderecos): ?>
     <tr>
-        <td><?=$endereco['rua']?></td>
-        <td><?=$endereco['bairro']?></td>
-        <td><?=$endereco['cidade']?></td>
-        <td><?=$endereco['cep']?></td>
+        <td><?=$enderecoSelecionado['rua']?></td>
+        <td><?=$enderecoSelecionado['bairro']?></td>
+        <td><?=$enderecoSelecionado['cidade']?></td>
+        <td><?=$enderecoSelecionado['cep']?></td>
     </tr>
-    <?php endforeach; ?>
+
 </table>
 <p><a href="endereco/selecionar/" class="">Trocar endereço de entrega</a></p>
 <?php }else{ ?>
@@ -73,4 +69,15 @@
     <input type="text" name="cupom" value="">
     <button type="submit" >Ok!</button>
 </form>
-<h4>**só vale um cupom por vez meu brother<h4>
+<h4>**só vale um cupom por vez meu brother<h4><br>
+
+    <h3>Selecione a forma de pagamento</h3>    
+    <form>
+<input type="radio" name="pagamento" value="cartao"> Cartão de credito
+<br>
+<input type="radio" name="pagamento" value="boleto"> Boleto
+<br>
+<input type="radio" name="pagamento" value="debito"> Debito
+</form>
+    
+<a href="./pedido" class="btn btn-primary">Comprar</a>
