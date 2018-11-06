@@ -1,5 +1,6 @@
 <?php
 require "modelo/cupomModelo.php";
+require "modelo/pedidoModelo.php";
 /**admin,user */
 function index() {
     $dados["carrinho"] = $_SESSION["carrinho"]["produtos"];
@@ -15,4 +16,19 @@ function index() {
     }
     exibir("pedido/finalizar", $dados);
 
+}
+
+function adicionar() {
+   
+        $idusuario= $_SESSION["auth"]["user"]["idusuario"];
+        $produto=$_SESSION["carrinho"]["produtos"];
+        $idendereco= $_SESSION["enderecoSelecionado"]["idendereco"];
+        $datacompra= date('d/m/y');
+        foreach ($produto as $produtos):
+            $idproduto =$produtos['idProduto'];
+            alert(adicionarPedido($idusuario, $idproduto,$datacompra));
+        endforeach;
+ 
+        redirecionar("produto/index");
+   
 }

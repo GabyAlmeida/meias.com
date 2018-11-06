@@ -28,31 +28,6 @@ CREATE TABLE produtos(
 	PRIMARY KEY(idproduto)
 ) engine = innodb;
 
-
-CREATE TABLE pedido(
-	idpedido INT AUTO_INCREMENT,
-	idusuario INT NOT NULL, 
-	idproduto INT NOT NULL,
-        idendereco INT NOT NULL,
-	datacompra date,
-	dataentrega date,
-        formadepagamento varchar(60),
-	PRIMARY KEY(idpedido),
-	FOREIGN KEY(idusuario) REFERENCES usuario(idusuario),
-        FOREIGN KEY(idendereco) REFERENCES endereco(idendereco),
-	FOREIGN KEY(idproduto) REFERENCES produtos(idproduto)
-) engine = innodb;
-
-CREATE TABLE pedido_produto(
-	idpedi_prod INT AUTO_INCREMENT,
-	idproduto INT NOT NULL,
-	idpedido INT NOT NULL,
-	PRIMARY KEY(idpedi_prod),
-	FOREIGN KEY(idproduto) REFERENCES produtos(idproduto),
-	FOREIGN KEY(idpedido) REFERENCES pedido(idpedido)
-) engine = innodb;
-
-
 CREATE TABLE endereco(
 	idendereco INT AUTO_INCREMENT,
 	idusuario INT NOT NULL,
@@ -64,6 +39,25 @@ CREATE TABLE endereco(
 	FOREIGN KEY(idusuario) REFERENCES usuario(idusuario)
 ) engine = innodb;
 
+CREATE TABLE pedido(
+	idpedido INT AUTO_INCREMENT,
+	idusuario INT NOT NULL, 
+	idproduto INT NOT NULL,
+	datacompra date,
+        formadepagamento varchar(60),
+	PRIMARY KEY(idpedido),
+	FOREIGN KEY(idusuario) REFERENCES usuario(idusuario),
+	FOREIGN KEY(idproduto) REFERENCES produtos(idproduto)
+) engine = innodb;
+
+CREATE TABLE pedido_produto(
+	idpedi_prod INT AUTO_INCREMENT,
+	idproduto INT NOT NULL,
+	idpedido INT NOT NULL,
+	PRIMARY KEY(idpedi_prod),
+	FOREIGN KEY(idproduto) REFERENCES produtos(idproduto),
+	FOREIGN KEY(idpedido) REFERENCES pedido(idpedido)
+) engine = innodb;
 
 CREATE TABLE cupom(
 	idcupom INT AUTO_INCREMENT,

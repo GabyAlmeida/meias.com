@@ -72,12 +72,12 @@
 <h4>**só vale um cupom por vez meu brother<h4><br>
 
     <h3>Selecione a forma de pagamento</h3>    
-    <form>
-<input type="radio" name="pagamento" value="cartao"> Cartão de credito
-<br>
-<input type="radio" name="pagamento" value="boleto"> Boleto
-<br>
-<input type="radio" name="pagamento" value="debito"> Debito
+  <form action="<?=@$acao?>" method="POST">
+<select name="pagamento">
+        <option value="credito" >Cartão de Crédito</option>
+        <option value="boleto" >Boleto</option>
+        <option value="debito" >Débito</option>
+    </select><br>
 </form>
     
-<a href="./pedido" class="btn btn-primary">Comprar</a>
+<a href="./pedido/adicionar" class="btn btn-primary">Comprar</a>
