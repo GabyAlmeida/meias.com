@@ -26,7 +26,7 @@ function adicionar() {
         $datacompra= date('d/m/y');
         foreach ($produto as $produtos):
             $idproduto =$produtos['idProduto'];
-            alert(adicionarPedido($idusuario, $idproduto,$datacompra));
+            alert(adicionarPedido($idusuario,$idendereco,$idproduto,$datacompra));
         endforeach;
  
         redirecionar("produto/index");

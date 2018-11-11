@@ -42,12 +42,14 @@ CREATE TABLE endereco(
 CREATE TABLE pedido(
 	idpedido INT AUTO_INCREMENT,
 	idusuario INT NOT NULL, 
+        idendereco INT NOT NULL, 
 	idproduto INT NOT NULL,
 	datacompra date,
         formadepagamento varchar(60),
 	PRIMARY KEY(idpedido),
 	FOREIGN KEY(idusuario) REFERENCES usuario(idusuario),
-	FOREIGN KEY(idproduto) REFERENCES produtos(idproduto)
+	FOREIGN KEY(idproduto) REFERENCES produtos(idproduto),
+        FOREIGN KEY(idendereco) REFERENCES endereco(idendereco)
 ) engine = innodb;
 
 CREATE TABLE pedido_produto(
