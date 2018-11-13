@@ -25,7 +25,7 @@ function listarCategoria($nome,$valor) {
 function adicionar() {
     if (ehPost()) {
         extract($_POST);
-        alert(adicionarProduto($preco,$nome,$descricao,$tamanho,$sexo,$categoria));
+        alert(adicionarProduto($preco,$nome,$descricao,$tamanho,$sexo,$categoria,$estoque));
         redirecionar("produto/index");
     } else {
         exibir("produto/formulario");
@@ -35,13 +35,8 @@ function adicionar() {
 /** admin */
 function editar($id) {
     if (ehPost()) {
-        $nome = $_POST["nome"];
-        $descricao = $_POST["descricao"];
-        $preco=$_POST["preco"];
-        $tamanho=$_POST["tamanho"];
-        $sexo=$_POST["sexo"];
-        $categoria=$_POST["categoria"];
-        alert(editarProduto($id,$preco,$nome,$descricao,$tamanho,$sexo,$categoria));
+          extract($_POST);
+        alert(editarProduto($id,$preco,$nome,$descricao,$tamanho,$sexo,$categoria,$estoque));
         redirecionar("produto/index");
     } else {
         $dados['produto'] = pegarProdutoPorId($id);

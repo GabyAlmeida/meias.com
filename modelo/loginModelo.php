@@ -1,5 +1,7 @@
 <?php
 function pegarLogin($nome,$senha) {
+    $nome= mysqli_real_escape_string(conn(),$nome);
+    $senha= mysqli_real_escape_string(conn(),$senha);
     $sql = "SELECT * FROM usuario WHERE nomeusuario= '$nome' and senha='$senha'";
     $resultado = mysqli_query($cnx = conn(), $sql);
 

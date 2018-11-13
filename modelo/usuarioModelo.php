@@ -18,7 +18,11 @@ function pegarUsuarioPorId($id) {
 }
 
 function adicionarUsuario($nome, $email, $senha,$cpf,$nascimento,$sexo) {
-    $sql = "INSERT INTO usuario (nomeusuario, email,senha,cpf,datadenascimento,sexo, tipousuario) 
+    $nome= mysqli_real_escape_string(conn(),$nome);
+    $email= mysqli_real_escape_string(conn(),$senha);
+    $cpf= mysqli_real_escape_string(conn(),$cpf);
+    $nascimento= mysqli_real_escape_string(conn(),$sexo);
+    $sexo = "INSERT INTO usuario (nomeusuario, email,senha,cpf,datadenascimento,sexo, tipousuario) 
 			VALUES ('$nome', '$email', '$senha','$cpf','$nascimento','$sexo','user')";
     $resultado = mysqli_query($cnx = conn(), $sql);
     if(!$resultado) { die('Erro ao cadastrar usuário' . mysqli_error($cnx)); }
@@ -26,6 +30,10 @@ function adicionarUsuario($nome, $email, $senha,$cpf,$nascimento,$sexo) {
 }
 
 function editarUsuario($id,$nome, $email, $senha,$cpf,$nascimento,$sexo) {
+    $nome= mysqli_real_escape_string(conn(),$nome);
+    $email= mysqli_real_escape_string(conn(),$senha);
+    $cpf= mysqli_real_escape_string(conn(),$cpf);
+    $nascimento= mysqli_real_escape_string(conn(),$sexo);
     $sql = "UPDATE usuario SET nomeusuario = '$nome', email = '$email', senha='$senha', cpf='$cpf', datadenascimento='$nascimento', sexo='$sexo'  WHERE idusuario = $id";
     $resultado = mysqli_query($cnx = conn(), $sql);
     if(!$resultado) { die('Erro ao alterar usuário' . mysqli_error($cnx)); }

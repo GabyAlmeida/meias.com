@@ -25,6 +25,7 @@ CREATE TABLE produtos(
 	imagem VARCHAR(60),
 	sexo VARCHAR(60),
 	categoria VARCHAR(60),
+        estoque int,
 	PRIMARY KEY(idproduto)
 ) engine = innodb;
 
@@ -43,12 +44,10 @@ CREATE TABLE pedido(
 	idpedido INT AUTO_INCREMENT,
 	idusuario INT NOT NULL, 
         idendereco INT NOT NULL, 
-	idproduto INT NOT NULL,
 	datacompra date,
-        formadepagamento varchar(60),
+        valortotal int,
 	PRIMARY KEY(idpedido),
 	FOREIGN KEY(idusuario) REFERENCES usuario(idusuario),
-	FOREIGN KEY(idproduto) REFERENCES produtos(idproduto),
         FOREIGN KEY(idendereco) REFERENCES endereco(idendereco)
 ) engine = innodb;
 
@@ -56,6 +55,7 @@ CREATE TABLE pedido_produto(
 	idpedi_prod INT AUTO_INCREMENT,
 	idproduto INT NOT NULL,
 	idpedido INT NOT NULL,
+        quantidade INT,
 	PRIMARY KEY(idpedi_prod),
 	FOREIGN KEY(idproduto) REFERENCES produtos(idproduto),
 	FOREIGN KEY(idpedido) REFERENCES pedido(idpedido)

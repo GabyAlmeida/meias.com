@@ -3,6 +3,7 @@
     nome: <input type="text" name="nome" value="<?=@$produto['nomeproduto']?>"><br>
     descricao: <input type="text" name="descricao" value="<?=@$produto['descricao']?>"><br>
     preco: <input type="number" name="preco" step="0.01" value="<?=@$produto['preco']?>"><br>
+    quantidade em estoque: <input type="number" name="estoque" step="0.01" value="<?=@$produto['estoque']?>"><br>
     tamanho:
     <select name="tamanho">
         <option value="p" <?=@assinalarCampo($produto['tamanho'], 'p')?>>Pequeno</option>

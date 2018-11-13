@@ -1,5 +1,5 @@
 <?php
-    $arquivo='manipulacao.txt';
+    $arquivo='teste.txt';
 $aux=0;
 $arquivoAberto= fopen($arquivo,'r');
 while (!feof($arquivoAberto)) {

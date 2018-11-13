@@ -1,7 +1,7 @@
 <?php
-function adicionarProduto($preco,$nome,$descricao,$tamanho,$sexo,$categoria){
-	$sql = "INSERT INTO produtos (preco, nomeproduto,descricao,tamanho,sexo,categoria) 
-			VALUES ('$preco','$nome','$descricao','$tamanho','$sexo','$categoria')";
+function adicionarProduto($preco,$nome,$descricao,$tamanho,$sexo,$categoria,$estoque){
+	$sql = "INSERT INTO produtos (preco, nomeproduto,descricao,tamanho,sexo,categoria,estoque) 
+			VALUES ('$preco','$nome','$descricao','$tamanho','$sexo','$categoria','$estoque')";
 
 	if ( isset( $_FILES[ 'imagem' ][ 'name' ] ) && $_FILES[ 'imagem' ][ 'error' ] == 0 ) {
 	$arquivo_tmp = $_FILES[ 'imagem' ][ 'tmp_name' ];
@@ -16,8 +16,8 @@ function adicionarProduto($preco,$nome,$descricao,$tamanho,$sexo,$categoria){
 		
 		$destino = './publico/images/'.$novoNome;
 		@move_uploaded_file ( $arquivo_tmp, $destino );
-		$sql = "INSERT INTO produtos(preco,nomeproduto,descricao,tamanho,imagem,sexo,categoria)
-		VALUES ('$preco','$nome', '$descricao','$tamanho','$destino','$sexo','$categoria')";
+		$sql = "INSERT INTO produtos(preco,nomeproduto,descricao,tamanho,imagem,sexo,categoria,estoque)
+		VALUES ('$preco','$nome', '$descricao','$tamanho','$destino','$sexo','$categoria','$estoque')";
 	}
 }
 
@@ -26,8 +26,8 @@ function adicionarProduto($preco,$nome,$descricao,$tamanho,$sexo,$categoria){
     return 'produto cadastrado com sucesso!';
 }
 
-function editarProduto($id,$preco,$nome,$descricao,$tamanho,$sexo,$categoria) {
-    $sql = "UPDATE produtos SET preco = '$preco', nomeproduto = '$nome', descricao='$descricao', tamanho='$tamanho', sexo='$sexo', categoria='$categoria'  WHERE idproduto = $id";
+function editarProduto($id,$preco,$nome,$descricao,$tamanho,$sexo,$categoria,$estoque) {
+    $sql = "UPDATE produtos SET preco = '$preco', nomeproduto = '$nome', descricao='$descricao', tamanho='$tamanho', sexo='$sexo', categoria='$categoria', estoque='$estoque'  WHERE idproduto = $id";
     
 if ( isset( $_FILES[ 'imagem' ][ 'name' ] ) && $_FILES[ 'imagem' ][ 'error' ] == 0 ) {
 	$arquivo_tmp = $_FILES[ 'imagem' ][ 'tmp_name' ];
@@ -42,8 +42,8 @@ if ( isset( $_FILES[ 'imagem' ][ 'name' ] ) && $_FILES[ 'imagem' ][ 'error' ] ==
 		
 		$destino = './publico/images/'.$novoNome;
 		@move_uploaded_file ( $arquivo_tmp, $destino );
-		$sql = "INSERT INTO produtos(preco,nomeproduto,descricao,tamanho,imagem,sexo,categoria)
-		VALUES ('$preco','$nome', '$descricao','$tamanho','$destino','$sexo','$categoria')";
+		$sql = "INSERT INTO produtos(preco,nomeproduto,descricao,tamanho,imagem,sexo,categoria,estoque)
+		VALUES ('$preco','$nome', '$descricao','$tamanho','$destino','$sexo','$categoria',$estoque')";
 	}
 }
 

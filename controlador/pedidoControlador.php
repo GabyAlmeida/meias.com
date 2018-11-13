@@ -21,14 +21,21 @@ function index() {
 function adicionar() {
    
         $idusuario= $_SESSION["auth"]["user"]["idusuario"];
-        $produto=$_SESSION["carrinho"]["produtos"];
         $idendereco= $_SESSION["enderecoSelecionado"]["idendereco"];
         $datacompra= date('d/m/y');
+        $tot=$_SESSION["carrinho"]["total"];
+        echo "<pre>";
+        alert(adicionarPedido($idusuario,$idendereco,$datacompra,$tot));
+        redirecionar("pedido/relacional");
+   
+}
+
+function relacional(){
+        
+        $produto=$_SESSION["carrinho"]["produtos"];
         foreach ($produto as $produtos):
             $idproduto =$produtos['idProduto'];
-            alert(adicionarPedido($idusuario,$idendereco,$idproduto,$datacompra));
-        endforeach;
- 
-        redirecionar("produto/index");
-   
+            $quantidade =$produtos['quantidade'];
+        
+        endforeach;  
 }

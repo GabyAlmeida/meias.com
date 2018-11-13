@@ -1,5 +1,9 @@
 <?php
 function adicionarEndereco($idusuario,$rua,$bairro,$cidade,$cep){
+    $rua= mysqli_real_escape_string(conn(),$rua);
+    $bairro= mysqli_real_escape_string(conn(),$bairro);
+    $cidade= mysqli_real_escape_string(conn(),$cidade);
+    $cep= mysqli_real_escape_string(conn(),$cep);
 	$sql = "INSERT INTO endereco (idusuario,rua,bairro,cidade,cep) 
 			VALUES ('$idusuario','$rua','$bairro','$cidade','$cep')";
         
@@ -27,6 +31,10 @@ function pegarEnderecoPorId($id) {
 }
 
 function editarEndereco($id,$rua,$bairro,$cidade,$cep) {
+    $rua= mysqli_real_escape_string(conn(),$rua);
+    $bairro= mysqli_real_escape_string(conn(),$bairro);
+    $cidade= mysqli_real_escape_string(conn(),$cidade);
+    $cep= mysqli_real_escape_string(conn(),$cep);
     $sql = "UPDATE endereco SET rua = '$rua', bairro = '$bairro', cidade='$cidade', cep='$cep' WHERE idendereco = $id";
     $resultado = mysqli_query($cnx = conn(), $sql);
     if(!$resultado) { die('Erro ao alterar endereco' . mysqli_error($cnx)); }
