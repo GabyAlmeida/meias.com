@@ -1,4 +1,4 @@
-<h2>Meu User :)</h2>
+<h2>Lista de usuários</h2>
 
 <table class="table">
     <thead>
@@ -23,6 +23,4 @@
     <?php endforeach; ?>
 </table>
 
-<a href="./endereco/mostrar" class="btn btn-primary">Meus endereços</a>
 <a href="./usuario/adicionar" class="btn btn-primary">Adicionar novo usuario</a>
-

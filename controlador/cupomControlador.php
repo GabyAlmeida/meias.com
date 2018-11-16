@@ -23,7 +23,7 @@ function deletar($termo) {
     redirecionar("cupom/index");
 }
 
-/** anon,admin,user */
+/** admin,user */
 function buscar() {
     extract($_POST);
 $_SESSION["cupom"]= buscarCupom($cupom);

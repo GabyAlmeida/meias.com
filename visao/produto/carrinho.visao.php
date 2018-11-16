@@ -2,6 +2,7 @@
 
 <h2>Carrinho</h2>
 
+<?php if (!empty($carrinho)){ ?>
 <table class="table">
     <thead>
         <tr>
@@ -30,7 +31,11 @@
 <?php echo "O valor total da compra é: " . $totalCarrinho; ?>
 <br>
 <br>
-<a href="./produto" class="btn btn-primary">Adicionar novo produto</a><br>
 <a href="./pedido" class="btn btn-primary">Finalizar pedido</a>
+<?php }else{ ?>
+<h3>O Carrinho está vazio :(</h3>
+<a href="./produto" class="btn btn-primary">Adicionar novos produtos</a><br>
+<?php } ?>
+
 
 

@@ -30,6 +30,7 @@ function deletarCupom($id) {
 }
 
 function buscarCupom($termoBusca) {
+    $termoBusca= mysqli_real_escape_string(conn(),$termoBusca);
     $sql = "SELECT desconto  from  cupom WHERE nomecupom='$termoBusca'"; //SELECIONAR TODOS OS REGISTROS!
     $retorno = mysqli_query(conn(), $sql);
     $cupom = mysqli_fetch_assoc($retorno);

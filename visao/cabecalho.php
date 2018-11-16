@@ -26,10 +26,10 @@
 							</ul>
 						</li>
 						<?php if (adminestaLogado()){ ?>
-						<li><a href="./usuario/index">area admin</a></li>
+						<li><a href="./admin">area admin</a></li>
 						<?php } ?>
-						<?php if (userestaLogado()){ ?>
-						<li><a href="./usuario/index">area usuario</a></li>
+						<?php if (estaLogado()){ ?>
+						<li><a href="./usuario/comum">area usuario</a></li>
 						<?php } ?>
 						<?php if (estaLogado()){ ?>
 						<li><a href="./login/logout">sair</a></li>

@@ -18,24 +18,21 @@ function index() {
 
 }
 
+/** admin,user */
 function adicionar() {
    
         $idusuario= $_SESSION["auth"]["user"]["idusuario"];
         $idendereco= $_SESSION["enderecoSelecionado"]["idendereco"];
-        $datacompra= date('d/m/y');
+        $datacompra= date('y/m/d');
         $tot=$_SESSION["carrinho"]["total"];
-        echo "<pre>";
-        alert(adicionarPedido($idusuario,$idendereco,$datacompra,$tot));
-        redirecionar("pedido/relacional");
-   
-}
-
-function relacional(){
-        
-        $produto=$_SESSION["carrinho"]["produtos"];
+      
+        $idpedido=adicionarPedido($idusuario,$idendereco,$datacompra,$tot);
+         $produto=$_SESSION["carrinho"]["produtos"];
         foreach ($produto as $produtos):
             $idproduto =$produtos['idProduto'];
             $quantidade =$produtos['quantidade'];
-        
-        endforeach;  
+            produtoPedido($idproduto, $idpedido, $quantidade);
+        endforeach;
+        unset($_SESSION["carrinho"]);
+        redirecionar("produto/index");
 }

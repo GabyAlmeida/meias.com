@@ -1,7 +1,8 @@
-<h2>Listar Endereços</h2>
+<h2>Todos enderecos cadastrados</h2>
 <table class="table">
     <thead>
         <tr>
+            <th>ID USUARIO</th>
             <th>RUA</th>
             <th>BAIRRO</th>
             <th>CIDADE</th>
@@ -11,10 +12,9 @@
         </tr>
     </thead>
     <?php 
-    echo "<pre>";
-    print_r($enderecos);
     foreach ($enderecos as $endereco): ?>
     <tr>
+        <td><?=$endereco['idusuario']?></td>
         <td><?=$endereco['rua']?></td>
         <td><?=$endereco['bairro']?></td>
         <td><?=$endereco['cidade']?></td>
@@ -24,5 +24,3 @@
     </tr>
     <?php endforeach; ?>
 </table>
-
-<a href="./endereco/adicionar" class="btn btn-primary">Adicionar novo endereço</a>

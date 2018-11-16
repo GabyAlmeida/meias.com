@@ -103,13 +103,10 @@ function listarCarrinho() {
         }
     }
     
-    if(!isset($_SESSION["carrinho"])) {
-        echo "Nao tem nada no carrinho";
-    } else {
         $dados["carrinho"] = $_SESSION["carrinho"]["produtos"];
         $dados["totalCarrinho"] = $_SESSION["carrinho"]["total"];
         exibir("produto/carrinho", $dados);
-    }
+    
     
 }
 /** anon */

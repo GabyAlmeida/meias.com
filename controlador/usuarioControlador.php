@@ -4,20 +4,22 @@ require "modelo/usuarioModelo.php";
 require "modelo/validacaoModelo.php";
 /** admin,user */
 function index() {
+    redirecionar("produto/index");
+}
 
-
-
-    $usuarioLogado = pegarUsuarioLogado();
-
-    if (adminestaLogado()){
-        $dados["usuarios"] = pegarTodosUsuarios();
-    }else{
-        $usuarios = array();
-        $usuarios[] = $usuarioLogado;
-        $dados["usuarios"] = $usuarios;
-    }
-
-    exibir("usuario/listar", $dados);
+/** admin,user */
+function comum(){
+     $usuarioLogado = pegarUsuarioLogado();
+      $usuarios = array();
+      $usuarios[] = $usuarioLogado;
+      $dados["usuarios"] = $usuarios;
+      
+      exibir("usuario/listar",$dados);
+}
+/** admin*/
+function admin(){
+     $dados["usuarios"] = pegarTodosUsuarios();
+     exibir("usuario/admin", $dados);
 }
 
 /** anon */
