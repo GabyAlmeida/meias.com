@@ -67,3 +67,14 @@ CREATE TABLE cupom(
         desconto INT,
 	PRIMARY KEY(idcupom)
 ) engine = innodb;
+
+CREATE TABLE tbl_log(
+ID_LOG INT (11),
+TABELA VARCHAR(45),
+USUARIO VARCHAR (45),
+DATA_HORA DATETIME,
+ACAO VARCHAR(45),
+DADOS VARCHAR(1000),
+PRIMARY KEY(ID_LOG)
+) engine = innodb;
+
