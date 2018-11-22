@@ -68,7 +68,7 @@ CREATE TABLE cupom(
 	PRIMARY KEY(idcupom)
 ) engine = innodb;
 
-CREATE TABLE tbl_log(
+CREATE TABLE tbl_log_produto(
 ID_LOG INT (11),
 TABELA VARCHAR(45),
 USUARIO VARCHAR (45),

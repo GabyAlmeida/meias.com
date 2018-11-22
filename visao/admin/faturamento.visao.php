@@ -1,4 +1,4 @@
-<h2>Lista de pedidos por municipio</h2>
+<h2>Faturamento</h2>
 <form action="<?=@$acao?>" method="POST">
 Periodo de <input name="inicio" type="date">
  a <input name="fim" type="date">
