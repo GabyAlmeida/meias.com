@@ -8,6 +8,13 @@ function adicionarPedido($idusuario,$idendereco,$datacompra,$tot) {
     if(!$resultado) { die('Erro ao fazer pedido' . mysqli_error($cnx)); }
     return $id;
 }
+
+function estoques($idproduto,$quantidade){
+    $sql = "call AtualizaEstoque ('$idproduto',-'$quantidade')";
+    $resultado = mysqli_query($cnx = conn(), $sql);
+    if(!$resultado) { die('Erro ao atualizar estoque' . mysqli_error($cnx)); }
+}
+
 function produtoPedido($idproduto,$idpedido,$quantidade) {
     $sql = "INSERT INTO pedido_produto (idproduto,idpedido,quantidade) 
 			VALUES ('$idproduto','$idpedido','$quantidade')";

@@ -14,6 +14,8 @@ function listarTodos() {
     exibir("produto/listarTodos", $dados);
 }
 
+
+
 /** anon,admin,user */
 function listarCategoria($nome,$valor) {
     $dados['produtos'] = selecionarProdutoCategoria($nome,$valor);

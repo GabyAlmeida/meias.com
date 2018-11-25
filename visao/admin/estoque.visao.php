@@ -13,7 +13,7 @@
     <tr>
         <td><?=$produto['idproduto']?></td>
         <td><?=$produto['nomeproduto']?></td>
-        <td><?=$produto['estoque']?></td>
+        <td><?=$produto['qtde']?></td>
     </tr>
     <?php endforeach; ?>
 </table>

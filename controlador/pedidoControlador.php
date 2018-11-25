@@ -32,6 +32,7 @@ function adicionar() {
             $idproduto =$produtos['idProduto'];
             $quantidade =$produtos['quantidade'];
             produtoPedido($idproduto, $idpedido, $quantidade);
+            estoques($idproduto,$quantidade);
         endforeach;
         unset($_SESSION["carrinho"]);
         redirecionar("produto/index");

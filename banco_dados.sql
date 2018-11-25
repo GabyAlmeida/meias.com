@@ -25,9 +25,37 @@ CREATE TABLE produtos(
 	imagem VARCHAR(60),
 	sexo VARCHAR(60),
 	categoria VARCHAR(60),
-        estoque int,
+        estoque_minimo INT(11),
+        estoque_maximo INT(11),
 	PRIMARY KEY(idproduto)
 ) engine = innodb;
+
+CREATE TABLE entrada_produto (
+identrada INT(11) NOT NULL AUTO_INCREMENT,
+id_produto INT(11) NULL DEFAULT NULL,
+qtde INT(11) NULL DEFAULT NULL,
+data_entrada DATE NULL DEFAULT NULL,
+FOREIGN KEY(id_produto) REFERENCES produtos(idproduto),
+PRIMARY KEY(identrada)
+) engine = innodb;
+
+CREATE TABLE estoque (
+idestoque INT(11) NOT NULL AUTO_INCREMENT,
+id_produto INT(11) NULL DEFAULT NULL,
+qtde INT(11) NULL DEFAULT NULL,
+FOREIGN KEY(id_produto) REFERENCES produtos(idproduto),
+PRIMARY KEY(idestoque)
+) engine = innodb;
+
+CREATE TABLE saida_produto (
+idsaida INT(11) NOT NULL AUTO_INCREMENT,
+id_produto INT(11) NULL DEFAULT NULL,
+qtde INT(11) NULL DEFAULT NULL,
+data_saida DATE NULL DEFAULT NULL,
+FOREIGN KEY(id_produto) REFERENCES produtos(idproduto),
+PRIMARY KEY(idsaida)
+) engine = innodb;
+
 
 CREATE TABLE endereco(
 	idendereco INT AUTO_INCREMENT,

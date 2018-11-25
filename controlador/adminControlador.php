@@ -9,7 +9,7 @@ function index(){
 
 /** admin */
 function estoque(){
-     $dados['produtos'] = selecionarTodosProdutos();
+     $dados['produtos'] = selecionarProdutosEstoque();
      exibir("admin/estoque", $dados);
 }
 

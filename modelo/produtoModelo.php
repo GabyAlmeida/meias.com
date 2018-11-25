@@ -72,6 +72,16 @@ function selecionarTodosProdutos(){
 	return $produtos;
 }
 
+function selecionarProdutosEstoque(){
+	$sql="SELECT pro.idproduto, pro.nomeproduto, es.qtde from produtos pro INNER JOIN estoque es ON es.id_produto=pro.idproduto"; //SELECIONAR UM REGISTRO!!
+	$retorno = mysqli_query(conn(),$sql);
+	$produtos=array();
+	while ($registros = mysqli_fetch_array($retorno)){
+		$produtos[]=$registros;
+	}
+
+	return $produtos;
+}
 function buscarM($termoBusca){
 	$sql="SELECT *  from  produtos WHERE nomeproduto LIKE '%$termoBusca%' or categoria LIKE '%$termoBusca%'"; //SELECIONAR TODOS OS REGISTROS!
 	$retorno = mysqli_query(conn(),$sql);
